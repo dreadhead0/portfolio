@@ -1,42 +1,95 @@
 <script>
-  import { theme } from '$lib/stores/theme';
+  import { theme, THEMES } from "$lib/stores/theme";
+
+  /** @type {Record<string, string>} */
+  const labels = {
+    red: "Blood red",
+    green: "Toxic green",
+    blue: "Ice blue",
+    violet: "Violet",
+    purple: "Purple",
+  };
 </script>
 
-<button
-  on:click={theme.toggle}
-  aria-label="Toggle theme"
-  class="theme-btn"
->
-  {#if $theme === 'dark'}
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-      <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-    </svg>
-  {:else}
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-    </svg>
-  {/if}
-</button>
+<div class="theme-picker" aria-label="Accent theme picker">
+  {#each THEMES as item}
+    <button
+      type="button"
+      class="theme-swatch theme-{item}"
+      class:active={$theme === item}
+      on:click={() => theme.setTheme(item)}
+      aria-label={`Use ${labels[item]} theme`}
+      aria-pressed={$theme === item}
+      title={labels[item]}
+    ></button>
+  {/each}
+</div>
 
 <style>
-  .theme-btn {
+  .theme-picker {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--border-bright);
-    border-radius: 6px;
-    background: transparent;
-    color: var(--accent);
-    cursor: pointer;
-    transition: background 0.2s, box-shadow 0.2s;
+    gap: 0.4rem;
+    padding: 0.35rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.025);
+    backdrop-filter: blur(12px);
   }
-  .theme-btn:hover {
-    background: var(--accent-glow);
-    box-shadow: 0 0 12px var(--accent-glow);
+
+  .theme-swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .theme-swatch:hover,
+  .theme-swatch.active {
+    transform: scale(1.12);
+    border-color: var(--text-primary);
+    box-shadow: 0 0 16px currentColor;
+  }
+
+  .theme-red {
+    background: #ef1b1b;
+    color: #ef1b1b;
+  }
+
+  .theme-green {
+    background: #00ff66;
+    color: #00ff66;
+  }
+
+  .theme-blue {
+    background: #38bdf8;
+    color: #38bdf8;
+  }
+
+  .theme-violet {
+    background: #8b5cf6;
+    color: #8b5cf6;
+  }
+
+  .theme-purple {
+    background: #c026d3;
+    color: #c026d3;
+  }
+
+  @media (max-width: 420px) {
+    .theme-picker {
+      gap: 0.25rem;
+      padding: 0.25rem;
+    }
+
+    .theme-swatch {
+      width: 16px;
+      height: 16px;
+    }
   }
 </style>

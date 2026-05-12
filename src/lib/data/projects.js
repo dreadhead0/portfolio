@@ -17,7 +17,7 @@ export const projects = [
       "Quill.js",
       "TypeScript",
     ],
-    color: "#F59E0B",
+    color: "#EF1B1B",
     link: "https://github.com",
     github: "https://github.com",
     featured: true,
