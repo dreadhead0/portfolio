@@ -9,11 +9,13 @@ export default {
         display: ['"Syne"', "sans-serif"],
         body: ['"DM Sans"', "sans-serif"],
       },
-      colors: {
-        amber: {
-          glow: "#F59E0B",
-        },
-      },
+colors: {
+  brand: {
+    DEFAULT: "#ef1b1b",
+    dim: "#7f0d0d",
+    glow: "#ef1b1b",
+  },
+},
       animation: {
         blink: "blink 1s step-end infinite",
         float: "float 6s ease-in-out infinite",
