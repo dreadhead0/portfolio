@@ -26,84 +26,105 @@
 
   let started = false;
 
-  const PROMPT = "alex@portfolio:~$ ";
+  const PROMPT = "dreadhead@portfolio:~$ ";
 
   /** @type {Record<string, () => TerminalLine[]>} */
   const COMMANDS = {
     help: () => [
-      { type: "info", text: "Available commands:" },
-      { type: "cmd", text: "  whoami       — about me" },
-      { type: "cmd", text: "  skills       — my tech stack" },
-      { type: "cmd", text: "  projects     — list projects" },
-      { type: "cmd", text: "  contact      — get in touch" },
+      { type: "cmd", text: "  whoami       — identity + focus" },
+      { type: "cmd", text: "  skills       — engineering toolkit" },
+      { type: "cmd", text: "  projects     — shipped stage work" },
+      { type: "cmd", text: "  focus        — what recruiters should remember" },
+      { type: "cmd", text: "  contact      — transmission channels" },
       { type: "cmd", text: "  resume       — download resume" },
       { type: "cmd", text: "  clear        — clear terminal" },
-      { type: "cmd", text: "  easter-egg   — 🤫" },
+      { type: "cmd", text: "  easter-egg   — classified" },
       { type: "cmd", text: "  exit         — close terminal" },
     ],
     whoami: () => [
-      { type: "output", text: "Full-Stack Engineer" },
+      { type: "output", text: "Frontend Systems Engineer" },
       {
         type: "output",
-        text: "Specializing in: Real-time systems, API design, Modern frontends",
+        text: "Specializing in: real-time systems, frontend architecture, performance, accessibility, UI polish",
       },
       {
         type: "output",
-        text: "Currently: Building NotesTogether & open for new opportunities",
+        text: "Currently: building interactive portfolio systems with SvelteKit",
       },
-      { type: "output", text: "Location: Remote 🌍" },
+      {
+        type: "output",
+        text: "Mode: clean UI / terminal energy / production mindset",
+      },
     ],
     skills: () => [
-      { type: "info", text: "── Tech Stack ──────────────────────────" },
-      { type: "output", text: "Languages  : TypeScript · Java · Python · Go" },
+      { type: "info", text: "── Engineering Toolkit ─────────────────" },
       {
         type: "output",
-        text: "Frontend   : Next.js · SvelteKit · React · Quill.js",
-      },
-      { type: "output", text: "Backend    : Spring Boot · FastAPI · Node.js" },
-      {
-        type: "output",
-        text: "Data       : PostgreSQL · Redis · Kafka · pgvector",
+        text: "Languages  : JavaScript · TypeScript · Solidity",
       },
       {
         type: "output",
-        text: "Infra      : Docker · Kubernetes · AWS · Vercel",
+        text: "Frontend   : SvelteKit · Vue · React · Next.js · TailwindCSS",
+      },
+      {
+        type: "output",
+        text: "Systems    : Real-time UI · PWA · Chrome Extensions · E2EE flows",
+      },
+      {
+        type: "output",
+        text: "Quality    : Accessibility · Performance · Testing · Responsive UI",
       },
       { type: "info", text: "───────────────────────────────────────" },
     ],
     projects: () => [
-      { type: "info", text: "drwxr-xr-x  projects/" },
+      { type: "info", text: "drwxr-xr-x  stage-work/" },
       {
         type: "output",
-        text: "-rw-r--r--  NotesTogether    [Next.js + Spring Boot + OT]",
+        text: "-rw-r--r--  E2EE Messaging App         [encrypted messaging]",
       },
       {
         type: "output",
-        text: "-rw-r--r--  FlowState        [SvelteKit + Supabase + AI]",
+        text: "-rw-r--r--  Todo Card                  [stateful accessible UI]",
       },
       {
         type: "output",
-        text: "-rw-r--r--  Beacon API       [Spring Boot + Kafka + Redis]",
+        text: "-rw-r--r--  Profile Card               [Responsive accessible UI]",
       },
       {
         type: "output",
-        text: "-rw-r--r--  Luminary UI      [React + TypeScript + Radix]",
+        text: "-rw-r--r--  Invoice Management App     [React CRUD workflow]",
       },
       {
         type: "output",
-        text: "-rw-r--r--  Prism Search     [Next.js + pgvector + OpenAI]",
+        text: "-rw-r--r--  Habit Tracker PWA          [spec-driven app]",
       },
       {
         type: "output",
-        text: "-rw-r--r--  DevMetrics       [Go + PostgreSQL + OAuth2]",
+        text: "-rw-r--r--  AI Page Summarizer         [Chrome extension]",
+      },
+
+      {
+        type: "output",
+        text: "-rw-r--r--  Data Visualization Platform   [real-time dashboard]",
+      },
+      {
+        type: "output",
+        text: "-rw-r--r--  Interactive Developer Portfolio    [An immersive portfolio]",
       },
     ],
+    focus: () => [
+      { type: "info", text: "Recruiter memory targets:" },
+      { type: "success", text: "✓ Real-time systems" },
+      { type: "success", text: "✓ Frontend architecture" },
+      { type: "success", text: "✓ Performance optimization" },
+      { type: "success", text: "✓ UI polish" },
+      { type: "success", text: "✓ Accessibility" },
+    ],
     contact: () => [
-      { type: "info", text: "Contact Information" },
-      { type: "output", text: "Email    : alex@example.com" },
-      { type: "output", text: "GitHub   : github.com/alexdev" },
-      { type: "output", text: "LinkedIn : linkedin.com/in/alexdev" },
-      { type: "output", text: "Twitter  : @alexdev" },
+      { type: "info", text: "Transmission Channels" },
+      { type: "output", text: "Email    : your.email@example.com" },
+      { type: "output", text: "GitHub   : github.com/your-username" },
+      { type: "output", text: "LinkedIn : linkedin.com/in/your-profile" },
     ],
     resume: () => [
       { type: "output", text: "Initiating download..." },
@@ -235,7 +256,7 @@
           <span class="tdot y"></span>
           <span class="tdot g"></span>
         </div>
-        <span class="term-title">alex@portfolio: ~</span>
+        <span class="term-title">dreadhead@portfolio: ~</span>
         <span></span>
       </div>
 
@@ -245,11 +266,9 @@
             <span class="splash-icon" aria-hidden="true">&gt;_</span>
             Interactive Terminal
           </p>
-          <p class="splash-sub">
-            Explore my portfolio through a real command-line interface
-          </p>
+          <p class="splash-sub">Navigate the portfolio like a system shell</p>
           <button class="splash-btn" on:click={startTerminal}>
-            Launch Terminal
+            System Terminal
           </button>
         </div>
       {:else}

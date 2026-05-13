@@ -1,21 +1,33 @@
 <script>
-  import { onMount } from 'svelte';
-  import { projects, categories } from '$lib/data/projects';
-  import ProjectCard from './ProjectCard.svelte';
+  import { onMount } from "svelte";
+  import { projects, categories } from "$lib/data/projects";
+  import ProjectCard from "./ProjectCard.svelte";
 
-  let el;
-  let activeCategory = 'all';
+  /** @type {HTMLElement | null} */
+  let el = null;
 
-  $: filtered = activeCategory === 'all'
-    ? projects
-    : projects.filter(p => p.category === activeCategory);
+  let activeCategory = "all";
+
+  $: filtered =
+    activeCategory === "all"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
 
   onMount(() => {
+    if (!el) return;
+
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { el.classList.add('visible'); obs.disconnect(); } },
-      { threshold: 0.1 }
+      ([entry]) => {
+        if (entry.isIntersecting && el) {
+          el.classList.add("visible");
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.1 },
     );
+
     obs.observe(el);
+
     return () => obs.disconnect();
   });
 </script>
@@ -33,14 +45,18 @@
         </h2>
       </div>
 
-      <div class="filter-tabs" role="tablist" aria-label="Filter projects by category">
+      <div
+        class="filter-tabs"
+        role="tablist"
+        aria-label="Filter projects by category"
+      >
         {#each categories as cat}
           <button
             role="tab"
             aria-selected={activeCategory === cat}
             class="filter-tab"
             class:active={activeCategory === cat}
-            on:click={() => activeCategory = cat}
+            on:click={() => (activeCategory = cat)}
           >
             {cat}
           </button>
@@ -76,23 +92,30 @@
     gap: 1rem;
     margin-bottom: 0.75rem;
   }
-  .label-line { display: block; width: 40px; height: 1px; background: var(--accent); }
+  .label-line {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
   .label-text {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.75rem;
     color: var(--accent);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
   .section-heading {
-    font-family: 'Syne', sans-serif;
+    font-family: "Syne", sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--text-primary);
     margin: 0;
   }
-  .heading-accent { color: var(--accent); }
+  .heading-accent {
+    color: var(--accent);
+  }
 
   .filter-tabs {
     display: flex;
@@ -100,7 +123,7 @@
     flex-wrap: wrap;
   }
   .filter-tab {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
     text-transform: lowercase;
     letter-spacing: 0.04em;
@@ -112,12 +135,15 @@
     cursor: pointer;
     transition: all 0.2s;
   }
-  .filter-tab:hover, .filter-tab.active {
+  .filter-tab:hover,
+  .filter-tab.active {
     border-color: var(--accent);
     color: var(--accent);
     background: var(--accent-glow);
   }
-  .filter-tab.active { font-weight: 600; }
+  .filter-tab.active {
+    font-weight: 600;
+  }
 
   .projects-grid {
     display: grid;
@@ -126,7 +152,12 @@
   }
 
   @media (max-width: 600px) {
-    .projects-grid { grid-template-columns: 1fr; }
-    .projects-header { flex-direction: column; align-items: flex-start; }
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+    .projects-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 </style>

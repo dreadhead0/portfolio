@@ -5,15 +5,17 @@
   import Skills from "$lib/components/Skills.svelte";
   import Terminal from "$lib/components/Terminal.svelte";
   import Contact from "$lib/components/Contact.svelte";
+  import PortfolioAssistant from "$lib/components/PortfolioAssistant.svelte";
 </script>
 
 <svelte:head>
-  <title>dreadhead — Frontend Developer</title>
+  <title>dreadhead — Frontend Systems Engineer</title>
 </svelte:head>
 
 <Hero />
 <About />
 <Skills />
 <Projects />
+<PortfolioAssistant />
 <Terminal />
 <Contact />

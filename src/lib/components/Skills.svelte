@@ -1,14 +1,25 @@
 <script>
-  import { onMount } from 'svelte';
-  import { skills } from '$lib/data/projects';
+  import { onMount } from "svelte";
+  import { skills } from "$lib/data/projects";
 
-  let el;
+  /** @type {HTMLElement | null} */
+  let el = null;
+
   onMount(() => {
+    if (!el) return;
+
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { el.classList.add('visible'); obs.disconnect(); } },
-      { threshold: 0.1 }
+      ([entry]) => {
+        if (entry.isIntersecting && el) {
+          el.classList.add("visible");
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.1 },
     );
+
     obs.observe(el);
+
     return () => obs.disconnect();
   });
 </script>
@@ -54,23 +65,30 @@
     gap: 1rem;
     margin-bottom: 1.5rem;
   }
-  .label-line { display: block; width: 40px; height: 1px; background: var(--accent); }
+  .label-line {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
   .label-text {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.75rem;
     color: var(--accent);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
   .section-heading {
-    font-family: 'Syne', sans-serif;
+    font-family: "Syne", sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     letter-spacing: -0.02em;
     margin-bottom: 3rem;
     color: var(--text-primary);
   }
-  .heading-accent { color: var(--accent); }
+  .heading-accent {
+    color: var(--accent);
+  }
 
   .skills-grid {
     display: grid;
@@ -82,7 +100,10 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
-    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    transition:
+      border-color 0.3s,
+      box-shadow 0.3s,
+      transform 0.3s;
   }
   .skill-group:hover {
     border-color: var(--border-bright);
@@ -96,13 +117,13 @@
     margin-bottom: 1rem;
   }
   .group-icon {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     color: var(--accent);
     font-size: 0.85rem;
     opacity: 0.6;
   }
   .group-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.8rem;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -116,14 +137,16 @@
     gap: 0.4rem;
   }
   .pill {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
     padding: 0.25rem 0.6rem;
     background: var(--accent-glow);
     border: 1px solid var(--border-bright);
     border-radius: 4px;
     color: var(--text-primary);
-    transition: background 0.2s, color 0.2s;
+    transition:
+      background 0.2s,
+      color 0.2s;
   }
   .pill:hover {
     background: var(--accent);

@@ -30,7 +30,7 @@
   <nav class="nav-inner" aria-label="Main navigation">
     <a href="#hero" class="logo" aria-label="Home">
       <span class="logo-bracket">[</span>
-      <span class="logo-text">alex.dev</span>
+      <span class="logo-text">dreadhead.dev</span>
       <span class="logo-bracket">]</span>
       <span class="cursor-blink" aria-hidden="true">_</span>
     </a>
