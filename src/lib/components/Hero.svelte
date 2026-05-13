@@ -4,10 +4,10 @@
   let visible = false;
   let typedText = "";
   const phrases = [
-    "full-stack engineer.",
-    "system designer.",
-    "problem solver.",
-    "open-source builder.",
+    "frontend systems engineer.",
+    "real-time interface builder.",
+    "performance-focused developer.",
+    "accessibility-minded UI engineer.",
   ];
   let phraseIdx = 0;
   let charIdx = 0;
@@ -63,25 +63,25 @@
     </div>
 
     <h1 class="hero-name">
-      <span class="name-line">Hello, I'm</span>
-      <span class="name-main">Alex<span class="name-accent">.</span></span>
+      <span class="name-line">system.boot / identity</span>
+      <span class="name-main">dread<span class="name-accent">.</span></span>
     </h1>
 
     <p class="hero-role" aria-live="polite">
-      <span class="role-prefix">I'm a </span>
+      <span class="role-prefix">I build as a </span>
       <span class="role-typed">{typedText}</span>
       <span class="role-cursor" aria-hidden="true">|</span>
     </p>
 
     <p class="hero-desc">
-      I build <strong>fast</strong>, <strong>scalable</strong>, and
-      <strong>beautifully interactive</strong> web applications — from real-time
-      collaborative editors to high-throughput APIs.
+      I engineer <strong>real-time interfaces</strong>,
+      <strong>frontend systems</strong>, and
+      <strong>polished web experiences</strong> with performance, accessibility,
+      and interaction quality treated as core architecture — not decoration.
     </p>
-
     <div class="hero-actions">
       <a href="#projects" class="btn-primary">
-        <span>View work</span>
+        <span>Inspect projects</span>
         <svg
           width="14"
           height="14"
@@ -96,7 +96,14 @@
           />
         </svg>
       </a>
-      <a href="#contact" class="btn-ghost">Get in touch</a>
+      <a href="#terminal" class="btn-ghost">Open terminal</a>
+    </div>
+
+    <div class="hero-signals" aria-label="Engineering focus areas">
+      <span>real-time systems</span>
+      <span>frontend architecture</span>
+      <span>performance</span>
+      <span>accessibility</span>
     </div>
 
     <div class="hero-socials">
@@ -121,29 +128,32 @@
         <span class="dot r"></span><span class="dot y"></span><span
           class="dot g"
         ></span>
-        <span class="code-file">portfolio.ts</span>
+        <span class="code-file">systems.profile.ts</span>
       </div>
       <pre class="code-body"><code
           ><span class="kw">const</span> <span class="var">dev</span> = <span
             class="punct">&#123;</span
           >
   <span class="key">name</span><span class="punct">:</span> <span class="str"
-            >"Alex"</span
-          ><span class="punct">,</span>
-  <span class="key">role</span><span class="punct">:</span> <span class="str"
-            >"Full-Stack"</span
-          ><span class="punct">,</span>
-  <span class="key">stack</span><span class="punct">:</span> <span class="punct"
-            >[</span
+            >"dreadhead"</span
           >
-    <span class="str">"Next.js"</span><span class="punct">,</span>
+          ><span class="punct"
+            >,<span class="key">role</span><span class="punct">:</span> <span
+              class="str">"Frontend Systems"</span
+            ><span class="punct">,</span>
+  <span class="key">stack</span><span class="punct">:</span> <span class="punct"
+              >[</span
+            >
     <span class="str">"SvelteKit"</span><span class="punct">,</span>
-    <span class="str">"Spring Boot"</span>
+    <span class="str">"Vue"</span><span class="punct">,</span>
+    <span class="str">"React"</span><span class="punct">,</span>
+    <span class="str">"Nextjs"</span><span class="punct">,</span>
   <span class="punct">],</span>
   <span class="key">available</span><span class="punct">:</span> <span
-            class="bool">true</span
-          >
-<span class="punct">&#125;</span></code
+              class="bool">true</span
+            >
+<span class="punct">&#125;</span></span
+          ></code
         ></pre>
     </div>
   </div>
@@ -377,6 +387,29 @@
     color: var(--accent);
   }
 
+  .hero-signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-signals span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    padding: 0.35rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .hero-signals span:hover {
+    color: var(--accent);
+    border-color: var(--border-bright);
+    background: var(--accent-glow);
+  }
+
   .hero-socials {
     display: flex;
     gap: 0.5rem;
@@ -530,6 +563,9 @@
     .hero-desc {
       margin-left: auto;
       margin-right: auto;
+    }
+    .hero-signals {
+      justify-content: center;
     }
     .code-float {
       display: none;

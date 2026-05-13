@@ -1,13 +1,24 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
 
-  let el;
+  /** @type {HTMLElement | null} */
+  let el = null;
+
   onMount(() => {
+    if (!el) return;
+
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { el.classList.add('visible'); obs.disconnect(); } },
-      { threshold: 0.2 }
+      ([entry]) => {
+        if (entry.isIntersecting && el) {
+          el.classList.add("visible");
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.2 },
     );
+
     obs.observe(el);
+
     return () => obs.disconnect();
   });
 </script>
@@ -22,35 +33,44 @@
     <div class="about-grid">
       <div class="about-text">
         <h2 class="section-heading">
-          Crafting software<br/>
-          <span class="heading-accent">with intention.</span>
+          Building interfaces<br />
+          <span class="heading-accent">that behave.</span>
         </h2>
         <p>
-          I'm a full-stack engineer obsessed with the intersection of engineering rigour and design craft.
-          I've shipped everything from real-time collaborative editors with custom Operational Transformation logic
-          to high-throughput backend services handling 50k+ events per second.
+          I am a frontend systems engineer focused on building interfaces that
+          stay fast, predictable, and usable under real interaction pressure. I
+          care about the parts users notice — motion, responsiveness, clarity —
+          and the parts they do not: state flow, accessibility, performance
+          budgets, and failure handling.
         </p>
+
         <p>
-          My philosophy: software should be fast by default, accessible always,
-          and beautiful where it matters. I write code the way I'd want to read it.
+          My work sits between product polish and engineering discipline. I have
+          built task systems, profile cards, invoice workflows, Chrome
+          extensions, real-time dashboards, encrypted messaging flows,
+          collaborative editors, and this SvelteKit portfolio as an interactive
+          developer experience.
         </p>
+
         <p>
-          When I'm not pushing commits, I'm contributing to open source,
-          writing about systems design, or exploring how AI can be woven thoughtfully into developer tooling.
+          The goal is simple: make frontend work feel engineered. Clean
+          architecture, readable components, accessible controls, smooth
+          transitions, and interfaces that do not collapse when the data,
+          viewport, or user behavior gets messy.
         </p>
 
         <div class="about-stats">
           <div class="stat">
-            <span class="stat-num">3+</span>
-            <span class="stat-label">Years Experience</span>
+            <span class="stat-num">8+</span>
+            <span class="stat-label">Stage Projects</span>
           </div>
           <div class="stat">
-            <span class="stat-num">20+</span>
-            <span class="stat-label">Projects Shipped</span>
+            <span class="stat-num">5</span>
+            <span class="stat-label">Core Focus Areas</span>
           </div>
           <div class="stat">
-            <span class="stat-num">∞</span>
-            <span class="stat-label">Bugs Fixed</span>
+            <span class="stat-num">0</span>
+            <span class="stat-label">Console Warnings Goal</span>
           </div>
         </div>
       </div>
@@ -59,18 +79,43 @@
         <div class="avatar-wrap">
           <div class="avatar-ring"></div>
           <div class="avatar-inner">
-            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="40" cy="30" r="16" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-              <circle cx="40" cy="30" r="10" fill="var(--accent)" opacity="0.3"/>
-              <path d="M15 65c0-13.807 11.193-25 25-25s25 11.193 25 25" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+            <svg
+              viewBox="0 0 80 80"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <circle
+                cx="40"
+                cy="30"
+                r="16"
+                fill="var(--accent)"
+                opacity="0.15"
+                stroke="var(--accent)"
+                stroke-width="1"
+              />
+              <circle
+                cx="40"
+                cy="30"
+                r="10"
+                fill="var(--accent)"
+                opacity="0.3"
+              />
+              <path
+                d="M15 65c0-13.807 11.193-25 25-25s25 11.193 25 25"
+                fill="var(--accent)"
+                opacity="0.15"
+                stroke="var(--accent)"
+                stroke-width="1"
+              />
             </svg>
           </div>
         </div>
         <div class="floating-tags">
-          <span class="tag" style="top:10%; left:-20%">TypeScript</span>
-          <span class="tag" style="top:30%; right:-20%">Spring Boot</span>
+          <span class="tag" style="top:10%; left:-20%">Real-time UI</span>
+          <span class="tag" style="top:30%; right:-20%">Accessibility</span>
           <span class="tag" style="bottom:25%; left:-15%">SvelteKit</span>
-          <span class="tag" style="bottom:5%; right:-10%">PostgreSQL</span>
+          <span class="tag" style="bottom:5%; right:-10%">Performance</span>
         </div>
       </div>
     </div>
@@ -96,7 +141,7 @@
     background: var(--accent);
   }
   .label-text {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.75rem;
     color: var(--accent);
     letter-spacing: 0.1em;
@@ -115,7 +160,7 @@
     font-size: 1.05rem;
   }
   .section-heading {
-    font-family: 'Syne', sans-serif;
+    font-family: "Syne", sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     line-height: 1.1;
@@ -123,7 +168,9 @@
     margin-bottom: 1.5rem;
     color: var(--text-primary);
   }
-  .heading-accent { color: var(--accent); }
+  .heading-accent {
+    color: var(--accent);
+  }
 
   .about-stats {
     display: flex;
@@ -132,16 +179,19 @@
     padding-top: 2rem;
     border-top: 1px solid var(--border);
   }
-  .stat { display: flex; flex-direction: column; }
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
   .stat-num {
-    font-family: 'Syne', sans-serif;
+    font-family: "Syne", sans-serif;
     font-size: 2rem;
     font-weight: 800;
     color: var(--accent);
     line-height: 1;
   }
   .stat-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.7rem;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -169,7 +219,7 @@
     animation: spin 20s linear infinite;
   }
   .avatar-ring::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 8px;
     height: 8px;
@@ -180,7 +230,11 @@
     transform: translateX(-50%);
     box-shadow: 0 0 12px var(--accent);
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
   .avatar-inner {
     width: 100%;
     height: 100%;
@@ -199,7 +253,7 @@
   }
   .tag {
     position: absolute;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.68rem;
     padding: 0.3rem 0.6rem;
     background: var(--bg-card);
@@ -209,14 +263,35 @@
     white-space: nowrap;
     animation: float 4s ease-in-out infinite;
   }
-  .tag:nth-child(2) { animation-delay: 1s; }
-  .tag:nth-child(3) { animation-delay: 2s; }
-  .tag:nth-child(4) { animation-delay: 3s; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .tag:nth-child(2) {
+    animation-delay: 1s;
+  }
+  .tag:nth-child(3) {
+    animation-delay: 2s;
+  }
+  .tag:nth-child(4) {
+    animation-delay: 3s;
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
 
   @media (max-width: 768px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .about-visual { display: none; }
-    .about-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-visual {
+      display: none;
+    }
+    .about-stats {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
   }
 </style>
