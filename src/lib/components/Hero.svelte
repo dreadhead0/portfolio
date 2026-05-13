@@ -552,27 +552,37 @@
       grid-template-columns: 1fr;
       text-align: center;
       padding-top: 7rem;
-      gap: 2rem;
+      gap: 3rem;
     }
-    .hero-actions {
+
+    .hero-actions,
+    .hero-socials,
+    .hero-signals {
       justify-content: center;
     }
-    .hero-socials {
-      justify-content: center;
-    }
+
     .hero-desc {
       margin-left: auto;
       margin-right: auto;
     }
-    .hero-signals {
-      justify-content: center;
-    }
+
     .code-float {
-      display: none;
+      display: block;
+      width: min(100%, 560px);
+      margin: 0 auto;
+      animation: none;
     }
+
+    .code-body {
+      text-align: left;
+      font-size: 0.76rem;
+      overflow-x: auto;
+    }
+
     .scroll-hint {
       display: none;
     }
+
     .status-bar {
       font-size: 0.65rem;
     }
