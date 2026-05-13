@@ -23,6 +23,14 @@ export const projects = [
   visual: "security",
   status: "case-study",
   type: "FullStack",
+  image: "/projects/e2ee-messaging.png",
+  liveStatus: "coming-soon",
+  problem:
+  "Messaging apps usually require users to trust the backend with sensitive content. This project focused on proving that private messages can be encrypted before they ever reach the server.",
+  build:
+  "Built a secure messaging flow with client-side key generation, encrypted payload handling, AES-GCM message encryption, RSA-OAEP key exchange, authentication, encrypted backend storage, and UI states for protected messages and decryption failures.",
+  impact:
+  "Demonstrates security-aware frontend architecture, Web Crypto API usage, client/server trust boundaries, and the ability to explain encryption decisions clearly through product UI.",
 },
 
   {
@@ -41,6 +49,14 @@ export const projects = [
     visual: "task",
     status: "case-study",
     type: "Frontend System",
+    image: "/projects/todo-card.png",
+    liveStatus: "coming-soon",
+    problem:
+      "The task required a single todo card to behave like a real app component, with editing, status transitions, priority changes, collapsible content, and accurate time state.",
+    build:
+      "Built a stateful card with synchronized checkbox/status logic, editable fields, priority indicators, overdue detection, keyboard-accessible expand/collapse behavior, and responsive form layouts.",
+    impact:
+      "Demonstrates deterministic frontend state management, accessibility discipline, test-friendly markup, and the ability to turn a small UI requirement into a polished interactive system.",
   },
   {
     id: 3,
@@ -58,6 +74,14 @@ export const projects = [
     visual: "profile",
     status: "case-study",
     type: "Frontend System",
+    image: "/projects/profile-card.png",
+    liveStatus: "coming-soon",
+    problem:
+    "The challenge was to build a simple profile card that was not only visually responsive, but also semantic, accessible, and easy for automated tests to inspect.",
+    build:
+    "Implemented a semantic profile card with structured sections, accessible avatar alt text, social links, hobbies and dislikes lists, current epoch time display, responsive layout behavior, and strict data-testid coverage.",
+    impact:
+    "Shows attention to HTML semantics, accessibility, responsive UI foundations, and building interfaces that are reliable for both users and automated testing.",
   },
   {
     id: 4,
@@ -75,6 +99,14 @@ export const projects = [
     visual: "invoice",
     status: "case-study",
     type: "Frontend System",
+    image: "/projects/invoice-app.png",
+    liveStatus: "coming-soon",
+    problem:
+      "The app needed to handle a complete invoice workflow with multiple status rules, form validation, draft behavior, filtering, persistence, and responsive layouts.",
+    build:
+      "Built invoice CRUD flows, validation states, draft saving, paid-state transitions, status filtering, confirmation modals, persistent local state, theme handling, and responsive form/list/detail views.",
+    impact:
+    "Demonstrates product-level state management, business logic handling, accessible forms, modal interactions, and the ability to structure a larger frontend application cleanly.",
   },
   {
     id: 5,
@@ -92,6 +124,14 @@ export const projects = [
     visual: "pwa",
     status: "case-study",
     type: "Frontend System",
+    image: "/projects/habit-tracker.png",
+    liveStatus: "coming-soon",
+    problem:
+      "The project required implementing a Progressive Web App from a strict technical requirements document with exact routes, naming rules, persistence behavior, selectors, and test expectations.",
+    build:
+      "Implemented the habit tracker according to the specification, including required structure, local persistence, PWA behavior, installability support, required selectors, and automated tests matching the expected titles and behavior.",
+    impact:
+      "Shows engineering discipline, spec compliance, test awareness, and the ability to build from formal requirements instead of assumptions.",
   },
   {
     id: 6,
@@ -109,6 +149,14 @@ export const projects = [
     visual: "extension",
     status: "case-study",
     type: "FullStack",
+    image: "/projects/ai-extension.png",
+    liveStatus: "coming-soon",
+    problem:
+    "Users need a fast way to understand long webpages, but browser extensions must handle page extraction, AI requests, caching, and security without exposing secrets.",
+    build:
+    "Built a Manifest V3 Chrome extension with popup UI, content script extraction, background service worker messaging, AI summarization flow, loading and error states, cached summaries, and clean separation between extension layers.",
+    impact:
+    "Demonstrates browser API knowledge, secure AI integration thinking, Chrome extension architecture, message passing, and useful product-focused tooling.",
   },
   {
     id: 7,
@@ -126,6 +174,14 @@ export const projects = [
     visual: "dashboard",
     status: "case-study",
     type: "Frontend System",
+    image: "/projects/realtime-dashboard.png",
+    liveStatus: "coming-soon",
+    problem:
+    "Real-time dashboards must update continuously without becoming noisy, slow, or unreadable. The challenge was to make streaming data feel alive while keeping the interface clear and performant.",
+    build:
+    "Built a Vue analytics dashboard with simulated live data, metric cards, line/bar/area charts, process tables, activity feeds, filtering controls, responsive layouts, and performance-conscious update behavior.",
+    impact:
+    "Shows real-time interface thinking, data visualization polish, responsive dashboard design, and attention to performance under continuous UI updates.",
   },
   {
     id: 8,
@@ -143,6 +199,14 @@ export const projects = [
     visual: "terminal",
     status: "case-study",
     type: "Fullstack",
+    image: "/projects/portfolio.png",
+    liveStatus: "coming-soon",
+    problem:
+    "A developer portfolio can easily feel like a static template. The goal was to build an immersive SvelteKit experience that proves frontend skill through interaction, performance, accessibility, and visual identity.",
+    build:
+    "Built a portfolio with dynamic accent themes, theme persistence, responsive hero layout, animated sections, interactive terminal, Groq-powered AI assistant, cinematic project modals, accessible navigation, and production build cleanup.",
+    impact:
+    "Demonstrates SvelteKit composition, interaction engineering, UI polish, accessibility, performance awareness, and originality through a portfolio that behaves like a product experience.",
   },
 ];
 

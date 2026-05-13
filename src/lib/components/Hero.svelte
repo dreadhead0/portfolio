@@ -552,28 +552,119 @@
       grid-template-columns: 1fr;
       text-align: center;
       padding-top: 7rem;
-      gap: 2rem;
+      gap: 3rem;
     }
-    .hero-actions {
+
+    .hero-actions,
+    .hero-socials,
+    .hero-signals {
       justify-content: center;
     }
-    .hero-socials {
-      justify-content: center;
-    }
+
     .hero-desc {
       margin-left: auto;
       margin-right: auto;
     }
-    .hero-signals {
-      justify-content: center;
-    }
+
     .code-float {
-      display: none;
+      display: block;
+      width: min(100%, 560px);
+      margin: 0 auto;
+      animation: none;
     }
+
+    .code-body {
+      text-align: left;
+      font-size: 0.76rem;
+      overflow-x: auto;
+    }
+
     .scroll-hint {
       display: none;
     }
+
     .status-bar {
+      font-size: 0.65rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding-top: 7rem;
+      gap: 3rem;
+    }
+
+    .hero-content {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .code-float {
+      display: block !important;
+      grid-column: 1;
+      grid-row: 2;
+      width: min(100%, 560px);
+      margin: 0 auto;
+      animation: none;
+    }
+
+    .code-card {
+      width: 100%;
+    }
+
+    .code-body {
+      text-align: left;
+      font-size: 0.76rem;
+      overflow-x: auto;
+    }
+
+    .hero-actions,
+    .hero-socials,
+    .hero-signals {
+      justify-content: center;
+    }
+
+    .hero-desc {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .scroll-hint {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding-inline: 1rem;
+      gap: 2rem;
+    }
+
+    .name-main {
+      font-size: clamp(3rem, 18vw, 4.5rem);
+    }
+
+    .code-float {
+      width: 100%;
+    }
+
+    .code-card {
+      border-radius: 10px;
+    }
+
+    .code-body {
+      padding: 1rem;
+      font-size: 0.68rem;
+      line-height: 1.65;
+    }
+
+    .code-header {
+      padding: 0.65rem 0.8rem;
+    }
+
+    .code-file {
       font-size: 0.65rem;
     }
   }

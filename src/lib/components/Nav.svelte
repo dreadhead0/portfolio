@@ -266,12 +266,28 @@
   }
 
   @media (max-width: 768px) {
+    .nav-inner {
+      justify-content: flex-start;
+      gap: 1rem;
+    }
+
+    .logo {
+      margin-right: auto;
+    }
+
     .nav-links {
       display: none;
     }
+
     .resume-btn {
       display: none;
     }
+
+    .nav-actions {
+      margin-left: 0;
+      gap: 0.65rem;
+    }
+
     .hamburger {
       display: flex;
     }
