@@ -459,7 +459,32 @@
     font-family: "JetBrains Mono", monospace;
     font-size: 0.8rem;
     line-height: 1.7;
+
     scrollbar-width: thin;
+    scrollbar-color: var(--accent) rgba(255, 255, 255, 0.04);
+  }
+
+  .term-output::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .term-output::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.035);
+    border-left: 1px solid var(--border);
+  }
+
+  .term-output::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 45%, transparent)
+    );
+    border-radius: 999px;
+    border: 2px solid #0d0d0d;
+  }
+
+  .term-output::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
   }
   .term-line {
     white-space: pre-wrap;

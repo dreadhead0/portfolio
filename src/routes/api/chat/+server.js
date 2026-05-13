@@ -84,6 +84,10 @@ Rules:
 - Do not invent live links beyond the GitHub links provided.
 - If asked unrelated questions, politely redirect back to the portfolio.
 - Tone: clean, technical, slightly terminal-inspired, not cheesy.
+- Do not use Markdown formatting.
+- Do not use asterisks for bold text.
+- Do not use Markdown links.
+- If mentioning a URL, write it plainly.
 `,
           },
           {
@@ -109,11 +113,17 @@ Rules:
     }
 
     const data = await response.json();
-    const reply =
-      data?.choices?.[0]?.message?.content ||
-      "I could not generate a response right now.";
+   const rawReply =
+  data?.choices?.[0]?.message?.content ||
+  "I could not generate a response right now.";
 
-    return json({ reply });
+const reply = rawReply
+  .replace(/\*\*(.*?)\*\*/g, "$1")
+  .replace(/\*(.*?)\*/g, "$1")
+  .replace(/\[(.*?)\]\((.*?)\)/g, "$1 ($2)")
+  .trim();
+
+return json({ reply });
   } catch (error) {
     console.error("Assistant route error:", error);
 

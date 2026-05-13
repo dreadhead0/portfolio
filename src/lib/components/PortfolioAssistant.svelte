@@ -75,6 +75,27 @@
     }, 2200);
   }
 
+  /**
+   * @param {string} text
+   * @returns {{ type: "text" | "link"; value: string }[]}
+   */
+  function linkifyText(text) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+    return text
+      .split(urlRegex)
+      .filter(Boolean)
+      .map((part) => {
+        const isLink = /^https?:\/\/[^\s]+$/.test(part);
+        const cleaned = isLink ? part.replace(/[),.]+$/, "") : part;
+
+        return {
+          type: isLink ? "link" : "text",
+          value: cleaned,
+        };
+      });
+  }
+
   function requestClearChat() {
     showClearConfirm = true;
   }
@@ -242,7 +263,21 @@
             <span class="message-prefix">
               {message.role === "assistant" ? "AI" : "YOU"}
             </span>
-            <p>{message.text}</p>
+            <p>
+              {#each linkifyText(message.text) as part}
+                {#if part.type === "link"}
+                  <a
+                    href={part.value}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {part.value}
+                  </a>
+                {:else}
+                  {part.value}
+                {/if}
+              {/each}
+            </p>
           </div>
         {/each}
 
@@ -523,6 +558,17 @@
     color: var(--accent);
     font-size: 0.62rem;
     letter-spacing: 0.14em;
+  }
+
+  .message p a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-bright);
+    word-break: break-all;
+  }
+
+  .message p a:hover {
+    background: var(--accent-glow);
   }
 
   .message p {

@@ -2,9 +2,13 @@
   import { onMount } from "svelte";
   import { projects, categories } from "$lib/data/projects";
   import ProjectCard from "./ProjectCard.svelte";
+  import ProjectModal from "./ProjectModal.svelte";
 
   /** @type {HTMLElement | null} */
   let el = null;
+
+  /** @type {any} */
+  let selectedProject = null;
 
   let activeCategory = "all";
 
@@ -30,6 +34,10 @@
 
     return () => obs.disconnect();
   });
+
+  function closeModal() {
+    selectedProject = null;
+  }
 </script>
 
 <section id="projects" aria-label="Projects">
@@ -43,6 +51,11 @@
         <h2 class="section-heading">
           Things I've <span class="heading-accent">built.</span>
         </h2>
+        <p class="section-subtitle">
+          Case studies from staged frontend systems, real-time interfaces,
+          browser tooling, security flows, and this interactive SvelteKit
+          portfolio.
+        </p>
       </div>
 
       <div
@@ -52,6 +65,7 @@
       >
         {#each categories as cat}
           <button
+            type="button"
             role="tab"
             aria-selected={activeCategory === cat}
             class="filter-tab"
@@ -64,13 +78,27 @@
       </div>
     </div>
 
-    <div class="projects-grid" role="tabpanel">
-      {#each filtered as project, i (project.id)}
-        <ProjectCard {project} index={i} />
-      {/each}
-    </div>
+    {#if filtered.length > 0}
+      <div class="projects-grid" role="tabpanel">
+        {#each filtered as project, i (project.id)}
+          <ProjectCard
+            {project}
+            index={i}
+            on:open={() => (selectedProject = project)}
+          />
+        {/each}
+      </div>
+    {:else}
+      <div class="empty-state">
+        <p>No projects found for this filter.</p>
+      </div>
+    {/if}
   </div>
 </section>
+
+{#if selectedProject}
+  <ProjectModal project={selectedProject} on:close={closeModal} />
+{/if}
 
 <style>
   section {
@@ -78,6 +106,7 @@
     max-width: 1200px;
     margin: 0 auto;
   }
+
   .projects-header {
     display: flex;
     align-items: flex-end;
@@ -86,18 +115,21 @@
     margin-bottom: 3rem;
     flex-wrap: wrap;
   }
+
   .section-label {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 0.75rem;
   }
+
   .label-line {
     display: block;
     width: 40px;
     height: 1px;
     background: var(--accent);
   }
+
   .label-text {
     font-family: "JetBrains Mono", monospace;
     font-size: 0.75rem;
@@ -105,6 +137,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+
   .section-heading {
     font-family: "Syne", sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
@@ -113,8 +146,16 @@
     color: var(--text-primary);
     margin: 0;
   }
+
   .heading-accent {
     color: var(--accent);
+  }
+
+  .section-subtitle {
+    max-width: 640px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 1rem 0 0;
   }
 
   .filter-tabs {
@@ -122,6 +163,7 @@
     gap: 0.35rem;
     flex-wrap: wrap;
   }
+
   .filter-tab {
     font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
@@ -129,18 +171,25 @@
     letter-spacing: 0.04em;
     padding: 0.4rem 0.875rem;
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: 999px;
     background: transparent;
     color: var(--text-muted);
     cursor: pointer;
-    transition: all 0.2s;
+    transition:
+      border-color 0.2s,
+      color 0.2s,
+      background 0.2s,
+      transform 0.2s;
   }
+
   .filter-tab:hover,
   .filter-tab.active {
     border-color: var(--accent);
     color: var(--accent);
     background: var(--accent-glow);
+    transform: translateY(-1px);
   }
+
   .filter-tab.active {
     font-weight: 600;
   }
@@ -151,10 +200,24 @@
     gap: 1.5rem;
   }
 
+  .empty-state {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    background: var(--bg-card);
+    color: var(--text-muted);
+    text-align: center;
+  }
+
   @media (max-width: 600px) {
+    section {
+      padding-inline: 1rem;
+    }
+
     .projects-grid {
       grid-template-columns: 1fr;
     }
+
     .projects-header {
       flex-direction: column;
       align-items: flex-start;
