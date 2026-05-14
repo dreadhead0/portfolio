@@ -4,6 +4,8 @@
   /** @type {HTMLElement | null} */
   let el = null;
 
+  const profileImage = "/profile.jpeg";
+
   onMount(() => {
     if (!el) return;
 
@@ -79,36 +81,11 @@
         <div class="avatar-wrap">
           <div class="avatar-ring"></div>
           <div class="avatar-inner">
-            <svg
-              viewBox="0 0 80 80"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <circle
-                cx="40"
-                cy="30"
-                r="16"
-                fill="var(--accent)"
-                opacity="0.15"
-                stroke="var(--accent)"
-                stroke-width="1"
-              />
-              <circle
-                cx="40"
-                cy="30"
-                r="10"
-                fill="var(--accent)"
-                opacity="0.3"
-              />
-              <path
-                d="M15 65c0-13.807 11.193-25 25-25s25 11.193 25 25"
-                fill="var(--accent)"
-                opacity="0.15"
-                stroke="var(--accent)"
-                stroke-width="1"
-              />
-            </svg>
+            <img
+              src={profileImage}
+              alt="Portrait of dreadhead"
+              class="profile-img"
+            />
           </div>
         </div>
         <div class="floating-tags">
@@ -244,8 +221,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
+    padding: 0;
     box-shadow: 0 0 40px var(--accent-glow);
+    overflow: hidden;
+  }
+
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .floating-tags {
     position: absolute;
@@ -283,15 +268,70 @@
   }
 
   @media (max-width: 768px) {
+    section {
+      padding: 5.5rem 1rem;
+      overflow: hidden;
+    }
+
+    .section-label {
+      margin-bottom: 2rem;
+    }
+
     .about-grid {
       grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
+
     .about-visual {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      order: -1;
+      gap: 1.25rem;
+      overflow: visible;
     }
-    .about-stats {
+
+    .avatar-wrap {
+      width: 150px;
+      height: 150px;
+    }
+
+    .floating-tags {
+      position: static;
+      display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding-inline: 0.5rem;
+    }
+
+    .tag {
+      position: static;
+      font-size: 0.6rem;
+      animation: none;
+    }
+
+    .about-text {
+      text-align: left;
+    }
+
+    .about-text p {
+      font-size: 0.98rem;
+      line-height: 1.75;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .stat {
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.025);
     }
   }
 </style>

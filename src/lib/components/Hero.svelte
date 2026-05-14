@@ -41,10 +41,14 @@
   });
 
   const socials = [
-    { name: "GitHub", href: "https://github.com", label: "GH" },
-    { name: "LinkedIn", href: "https://linkedin.com", label: "LI" },
-    { name: "Twitter", href: "https://twitter.com", label: "TW" },
-    { name: "Email", href: "mailto:alex@example.com", label: "EM" },
+    { name: "GitHub", href: "https://github.com/dreadhead0", label: "GH" },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/precious-odion/",
+      label: "LI",
+    },
+    { name: "X", href: "https://x.com/dreadhead1101", label: "X" },
+    { name: "Email", href: "mailto:dh.dreadhead@gmail.com", label: "EM" },
   ];
 </script>
 
