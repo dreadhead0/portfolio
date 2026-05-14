@@ -30,8 +30,11 @@
             <span class="lock-shackle"></span>
             <span class="lock-body"></span>
           </span>
-          <code>ciphertext_only</code>
-          <small>client-side encryption</small>
+
+          <div class="security-copy">
+            <code>ciphertext_only</code>
+            <small>client-side encryption</small>
+          </div>
         </div>
       {:else if project.visual === "task"}
         <div class="mini-task">
@@ -238,7 +241,6 @@
     color: var(--accent);
   }
 
-  .mini-security,
   .mini-task,
   .mini-profile,
   .mini-extension,
@@ -251,46 +253,6 @@
     background: rgba(255, 255, 255, 0.035);
     max-height: 96px;
     overflow: hidden;
-  }
-
-  .mini-lock {
-    position: relative;
-    display: inline-flex;
-    width: 24px;
-    height: 28px;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  .lock-shackle {
-    position: absolute;
-    top: 1px;
-    width: 15px;
-    height: 15px;
-    border: 2px solid var(--accent);
-    border-bottom: 0;
-    border-radius: 999px 999px 0 0;
-    box-shadow: 0 0 12px var(--accent-glow);
-  }
-
-  .lock-body {
-    width: 22px;
-    height: 16px;
-    border-radius: 5px;
-    background: var(--accent);
-    box-shadow: 0 0 16px var(--accent-glow);
-  }
-
-  .lock-body::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 5px;
-    width: 4px;
-    height: 6px;
-    border-radius: 999px;
-    background: #050505;
-    transform: translateX(-50%);
   }
 
   .mini-security code,
@@ -307,32 +269,6 @@
   .mini-extension small {
     color: var(--text-muted);
     font-size: 0.68rem;
-  }
-
-  .mini-security {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 0.85rem;
-    min-height: 76px;
-    max-height: none;
-    overflow: hidden;
-  }
-
-  .mini-security code {
-    color: var(--text-muted);
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.62rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .mini-security small {
-    grid-column: 2;
-    color: var(--text-muted);
-    font-size: 0.66rem;
-    white-space: nowrap;
   }
 
   .mini-invoice {
@@ -375,6 +311,85 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .mini-security {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-height: 74px;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.035);
+    overflow: hidden;
+  }
+
+  .security-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .security-copy code {
+    color: var(--text-muted);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.62rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .security-copy small {
+    color: var(--text-muted);
+    font-size: 0.66rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mini-lock {
+    position: relative;
+    display: inline-flex;
+    width: 26px;
+    height: 30px;
+    flex: 0 0 26px;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .lock-shackle {
+    position: absolute;
+    top: 1px;
+    width: 16px;
+    height: 15px;
+    border: 2px solid var(--accent);
+    border-bottom: 0;
+    border-radius: 999px 999px 0 0;
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  .lock-body {
+    position: relative;
+    width: 23px;
+    height: 17px;
+    border-radius: 5px;
+    background: var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow);
+  }
+
+  .lock-body::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    width: 4px;
+    height: 6px;
+    border-radius: 999px;
+    background: #050505;
+    transform: translateX(-50%);
   }
 
   .mini-extension {
@@ -540,30 +555,6 @@
 
   .preview-line.short {
     width: 38%;
-  }
-
-  .preview-dashboard .preview-content::after,
-  .preview-invoice .preview-content::after,
-  .preview-pwa .preview-content::after {
-    content: "";
-    display: block;
-    height: 44px;
-    margin-top: 0.8rem;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: linear-gradient(90deg, var(--accent-glow), transparent);
-  }
-
-  .preview-security .preview-content::after {
-    content: "ciphertext://AES-GCM";
-    display: block;
-    margin-top: 0.8rem;
-    padding: 0.55rem;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.65rem;
   }
 
   .card-top {
