@@ -149,8 +149,8 @@ export const projects = [
     visual: "extension",
     status: "case-study",
     type: "FullStack",
-    image: "/projects/ai-extension.png",
-    liveStatus: "coming-soon",
+    image: "/projects/ai-extension.jpeg",
+    liveStatus: "live",
     problem:
     "Users need a fast way to understand long webpages, but browser extensions must handle page extraction, AI requests, caching, and security without exposing secrets.",
     build:
