@@ -35,7 +35,6 @@
       <span class="cursor-blink" aria-hidden="true">_</span>
     </a>
 
-    <!-- Desktop links -->
     <ul class="nav-links" role="list">
       {#each links as link}
         <li>
@@ -56,7 +55,7 @@
       >
         resume<span aria-hidden="true">.pdf</span>
       </a>
-      <!-- Mobile hamburger -->
+
       <button
         class="hamburger"
         on:click={() => (menuOpen = !menuOpen)}
@@ -71,7 +70,6 @@
     </div>
   </nav>
 
-  <!-- Mobile menu -->
   {#if menuOpen}
     <div
       id="mobile-menu"

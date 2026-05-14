@@ -53,7 +53,6 @@
 </script>
 
 <section class="hero" aria-label="Introduction" id="hero">
-  <!-- Animated grid bg -->
   <div class="grid-bg" aria-hidden="true">
     <div class="grid-lines"></div>
     <div class="glow-orb orb-1"></div>
@@ -125,7 +124,6 @@
     </div>
   </div>
 
-  <!-- Floating code snippet -->
   <div class="code-float" aria-hidden="true">
     <div class="code-card">
       <div class="code-header">
@@ -181,7 +179,6 @@
     gap: 4rem;
   }
 
-  /* Background */
   .grid-bg {
     position: absolute;
     inset: 0;
@@ -233,7 +230,6 @@
     }
   }
 
-  /* Content */
   .hero-content {
     position: relative;
     z-index: 1;
@@ -438,7 +434,6 @@
     background: var(--accent-glow);
   }
 
-  /* Code float */
   .code-float {
     position: relative;
     z-index: 1;
@@ -509,7 +504,6 @@
     color: #ff9cac;
   }
 
-  /* Scroll hint */
   .scroll-hint {
     position: absolute;
     bottom: 2rem;

@@ -211,7 +211,7 @@
     await tick();
     pushLines([
       { type: "info", text: "╔════════════════════════════════════════╗" },
-      { type: "info", text: "║   alex@portfolio — interactive shell   ║" },
+      { type: "info", text: "║  dread@portfolio — interactive shell   ║" },
       { type: "info", text: "╚════════════════════════════════════════╝" },
       { type: "output", text: "Type 'help' for available commands." },
       { type: "output", text: "" },
