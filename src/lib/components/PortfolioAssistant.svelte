@@ -675,22 +675,48 @@
 
   @media (max-width: 520px) {
     .assistant-root {
-      right: 1rem;
-      bottom: 1rem;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      left: auto;
+    }
+
+    .assistant-orb {
+      width: 54px;
+      height: 54px;
     }
 
     .assistant-panel {
       position: fixed;
-      left: 1rem;
-      right: 1rem;
-      bottom: 5rem;
+      left: 0.75rem;
+      right: 0.75rem;
+      bottom: 4.75rem;
       width: auto;
-      max-height: calc(100vh - 7rem);
+      max-width: none;
+      max-height: min(76vh, 620px);
+      border-radius: 18px;
+    }
+
+    .assistant-header {
+      padding: 0.9rem;
+    }
+
+    .assistant-header h2 {
+      font-size: 1.05rem;
+    }
+
+    .assistant-subtitle {
+      padding: 0.75rem 0.9rem 0;
+      font-size: 0.82rem;
+    }
+
+    .prompt-chips {
+      padding: 0.75rem 0.9rem;
     }
 
     .messages {
-      min-height: 190px;
-      max-height: 280px;
+      min-height: 180px;
+      max-height: 250px;
+      padding: 0.9rem;
     }
 
     .message.user,
@@ -701,10 +727,23 @@
 
     .assistant-form {
       grid-template-columns: 1fr;
+      padding: 0.9rem;
     }
 
     .assistant-form button {
       width: 100%;
+    }
+  }
+
+  @supports (bottom: env(safe-area-inset-bottom)) {
+    .assistant-root {
+      bottom: calc(1rem + env(safe-area-inset-bottom));
+    }
+
+    @media (max-width: 520px) {
+      .assistant-root {
+        bottom: calc(0.75rem + env(safe-area-inset-bottom));
+      }
     }
   }
 

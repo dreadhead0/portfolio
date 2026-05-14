@@ -6,6 +6,7 @@
   const dispatch = createEventDispatcher();
 
   let imageFailed = false;
+  let imagePreviewOpen = false;
 
   /** @type {Record<string, string>} */
   const visualLabels = {
@@ -67,13 +68,21 @@
 
     <div class="visual-shell">
       {#if project.image && !imageFailed}
-        <img
-          src={project.image}
-          alt="Screenshot of {project.title}"
-          class="project-image"
-          loading="lazy"
-          on:error={() => (imageFailed = true)}
-        />
+        <button
+          type="button"
+          class="image-preview-btn"
+          aria-label="Open full screenshot for {project.title}"
+          on:click={() => (imagePreviewOpen = true)}
+        >
+          <img
+            src={project.image}
+            alt="Screenshot of {project.title}"
+            class="project-image"
+            loading="lazy"
+            on:error={() => (imageFailed = true)}
+          />
+          <span class="image-hint">Click to expand</span>
+        </button>
       {:else}
         <div class="visual-placeholder visual-{project.visual}">
           <div class="preview-topbar">
@@ -191,6 +200,34 @@
       </div>
     </div>
   </div>
+  {#if imagePreviewOpen}
+    <div class="screenshot-modal" role="presentation">
+      <button
+        type="button"
+        class="screenshot-backdrop"
+        aria-label="Close screenshot preview"
+        on:click={() => (imagePreviewOpen = false)}
+      ></button>
+
+      <div
+        class="screenshot-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Full screenshot preview"
+      >
+        <button
+          type="button"
+          class="screenshot-close"
+          aria-label="Close screenshot preview"
+          on:click={() => (imagePreviewOpen = false)}
+        >
+          ×
+        </button>
+
+        <img src={project.image} alt="Full screenshot of {project.title}" />
+      </div>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -336,6 +373,126 @@
         transparent 6px
       ),
       #0d0d0d;
+  }
+
+  .image-preview-btn {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+    border-radius: 18px;
+  }
+
+  .image-preview-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .image-hint {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid var(--border-bright);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: var(--accent);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+    opacity: 0;
+    transform: translateY(4px);
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+  }
+
+  .image-preview-btn:hover .image-hint,
+  .image-preview-btn:focus-visible .image-hint {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .screenshot-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+  }
+
+  .screenshot-backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: radial-gradient(
+        circle at center,
+        var(--accent-glow),
+        transparent 38%
+      ),
+      rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(18px);
+    cursor: zoom-out;
+  }
+
+  .screenshot-dialog {
+    position: relative;
+    width: min(1100px, 94vw);
+    max-height: 88vh;
+    border: 1px solid var(--border-bright);
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--bg-card);
+    box-shadow:
+      0 30px 120px rgba(0, 0, 0, 0.75),
+      0 0 70px var(--accent-glow);
+  }
+
+  .screenshot-dialog img {
+    display: block;
+    width: 100%;
+    max-height: 88vh;
+    object-fit: contain;
+    background: #050505;
+  }
+
+  .screenshot-close {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1.3rem;
+  }
+
+  .screenshot-close:hover {
+    color: var(--accent);
+    border-color: var(--border-bright);
+    background: var(--accent-glow);
+  }
+
+  @media (max-width: 520px) {
+    .screenshot-modal {
+      padding: 0.75rem;
+    }
+
+    .screenshot-dialog {
+      width: 96vw;
+      border-radius: 16px;
+    }
+
+    .image-hint {
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .preview-topbar {
@@ -588,9 +745,18 @@
   }
 
   @media (max-width: 820px) {
+    .modal-backdrop {
+      padding: 1rem;
+      place-items: start center;
+      overflow-y: auto;
+    }
+
     .modal {
       grid-template-columns: 1fr;
-      max-height: 88vh;
+      width: 100%;
+      height: auto;
+      max-height: none;
+      margin-block: 1rem;
     }
 
     .visual-shell {
@@ -600,8 +766,23 @@
       border-bottom: 1px solid var(--border);
     }
 
+    .image-preview-btn,
+    .project-image,
+    .visual-placeholder {
+      width: 100%;
+    }
+
+    .project-image,
+    .visual-placeholder {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
     .modal-content {
-      padding: 1.4rem;
+      min-height: 0;
+      max-height: none;
+      overflow: visible;
+      padding: 1.35rem;
     }
   }
 
@@ -610,12 +791,84 @@
       padding: 0.75rem;
     }
 
+    .modal {
+      border-radius: 18px;
+    }
+
     .visual-shell {
-      display: none;
+      padding: 0.75rem;
+    }
+
+    .project-image,
+    .visual-placeholder {
+      border-radius: 14px;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 11vw, 2.6rem);
+    }
+
+    .modal-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .modal-link.primary,
+    .modal-link,
+    .demo-disabled {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  @media (max-width: 520px) {
+    .modal-backdrop {
+      padding: 0.75rem;
+      align-items: start;
+      overflow-y: auto;
     }
 
     .modal {
       border-radius: 18px;
+      max-height: none;
+      height: auto;
+      min-height: auto;
+    }
+
+    .visual-shell {
+      display: grid;
+      min-height: auto;
+      padding: 0.75rem;
+    }
+
+    .project-image,
+    .visual-placeholder {
+      aspect-ratio: 16 / 10;
+      border-radius: 14px;
+    }
+
+    .modal-content {
+      padding: 1.2rem;
+      max-height: none;
+      overflow: visible;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .screenshot-modal {
+      padding: 0.75rem;
+      place-items: center;
+    }
+
+    .screenshot-dialog {
+      width: 100%;
+      max-width: 100%;
+      max-height: 86vh;
+      border-radius: 16px;
+    }
+
+    .screenshot-dialog img {
+      max-height: 86vh;
+      object-fit: contain;
     }
   }
 

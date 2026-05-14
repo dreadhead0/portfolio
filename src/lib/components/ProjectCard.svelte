@@ -176,6 +176,18 @@
     outline: none;
   }
 
+  .card {
+    min-width: 0;
+  }
+
+  .card-title,
+  .card-desc,
+  .tech-tag,
+  .card-link,
+  .coming-soon {
+    overflow-wrap: anywhere;
+  }
+
   .card::before {
     content: "";
     position: absolute;

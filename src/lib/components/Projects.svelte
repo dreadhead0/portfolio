@@ -212,15 +212,27 @@
   @media (max-width: 600px) {
     section {
       padding-inline: 1rem;
+      overflow: hidden;
     }
 
     .projects-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .projects-header {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .filter-tabs {
+      width: 100%;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 0.25rem;
+    }
+
+    .filter-tab {
+      flex: 0 0 auto;
     }
   }
 </style>

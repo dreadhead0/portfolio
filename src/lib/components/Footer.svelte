@@ -1,13 +1,18 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <span class="brand-bracket">[</span>alex.dev<span class="brand-bracket">]</span>
+      <span class="brand-bracket">[</span>dreadhead .dev<span
+        class="brand-bracket">]</span
+      >
     </div>
     <p class="footer-copy">
-      Built with <span class="accent">SvelteKit</span> · Designed with intention · © 2025
+      Built with <span class="accent">SvelteKit</span> · Designed with intention
+      · © 2026
     </p>
     <p class="footer-sub">
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+        >Source on GitHub</a
+      >
     </p>
   </div>
 </footer>
@@ -28,26 +33,36 @@
     text-align: center;
   }
   .footer-brand {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.9rem;
     color: var(--text-primary);
     margin-bottom: 0.25rem;
   }
-  .brand-bracket { color: var(--accent); }
+  .brand-bracket {
+    color: var(--accent);
+  }
   .footer-copy {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.72rem;
     color: var(--text-muted);
     margin: 0;
   }
-  .accent { color: var(--accent); }
+  .accent {
+    color: var(--accent);
+  }
   .footer-sub {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.68rem;
     color: var(--text-muted);
     margin: 0;
     opacity: 0.5;
   }
-  .footer-sub a { color: inherit; text-decoration: none; }
-  .footer-sub a:hover { color: var(--accent); opacity: 1; }
+  .footer-sub a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .footer-sub a:hover {
+    color: var(--accent);
+    opacity: 1;
+  }
 </style>

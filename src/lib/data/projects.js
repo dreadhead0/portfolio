@@ -16,15 +16,15 @@ export const projects = [
     "Secure Messaging",
     "API Integration",
   ],
-  link: "https://github.com",
+  link: "https://whisperbox-six.vercel.app/",
   github: "https://github.com/dreadhead0/whisperbox",
   featured: true,
   year: 2026,
   visual: "security",
   status: "case-study",
   type: "FullStack",
-  image: "/projects/e2ee-messaging.png",
-  liveStatus: "coming-soon",
+  image: "/projects/e2ee-messaging.jpeg",
+  liveStatus: "live",
   problem:
   "Messaging apps usually require users to trust the backend with sensitive content. This project focused on proving that private messages can be encrypted before they ever reach the server.",
   build:
@@ -42,15 +42,15 @@ export const projects = [
     longDesc:
       "Built an accessible, testable todo component with edit mode, synchronized checkbox/status behavior, priority indicators, overdue detection, keyboard-friendly expand/collapse controls, and time updates that react to task state. This project focused on deterministic UI behavior, accessibility, and clean state management.",
     tech: ["HTML", "CSS", "JavaScript", "Accessibility", "State Management"],
-    link: "https://github.com",
+    link: "https://todo-card-hng-stage-0.vercel.app/",
     github: "https://github.com/dreadhead0/Todo-Card-HNG-Stage-0",
     featured: false,
     year: 2026,
     visual: "task",
     status: "case-study",
     type: "Frontend System",
-    image: "/projects/todo-card.png",
-    liveStatus: "coming-soon",
+    image: "/projects/todo-card.jpeg",
+    liveStatus: "live",
     problem:
       "The task required a single todo card to behave like a real app component, with editing, status transitions, priority changes, collapsible content, and accurate time state.",
     build:
@@ -67,15 +67,15 @@ export const projects = [
     longDesc:
       "Implemented a profile card using semantic HTML, responsive CSS, accessible avatar text, keyboard-focusable social links, live epoch time display, and structured hobbies/dislikes sections. The focus was building UI that automated tests could reliably inspect while still feeling polished.",
     tech: ["HTML", "CSS", "JavaScript", "Semantic HTML", "Responsive Design"],
-    link: "https://github.com",
+    link: "https://profile-card-hng-14.vercel.app/",
     github: "https://github.com/dreadhead0/Profile-card-HNG-14",
     featured: false,
     year: 2026,
     visual: "profile",
     status: "case-study",
     type: "Frontend System",
-    image: "/projects/profile-card.png",
-    liveStatus: "coming-soon",
+    image: "/projects/profile-card.jpeg",
+    liveStatus: "live",
     problem:
     "The challenge was to build a simple profile card that was not only visually responsive, but also semantic, accessible, and easy for automated tests to inspect.",
     build:
@@ -92,15 +92,15 @@ export const projects = [
     longDesc:
       "Built a full invoice workflow with create, read, update, delete, draft saving, paid-state transitions, status filtering, confirmation modals, form validation, theme persistence, and responsive layouts. The project emphasized business logic, state consistency, and accessible form interactions.",
     tech: ["React", "JavaScript", "LocalStorage", "Forms", "Responsive UI"],
-    link: "https://github.com",
+    link: "https://invoice-app-omega-bice.vercel.app/",
     github: "https://github.com/dreadhead0/invoice-app",
     featured: true,
     year: 2026,
     visual: "invoice",
     status: "case-study",
     type: "Frontend System",
-    image: "/projects/invoice-app.png",
-    liveStatus: "coming-soon",
+    image: "/projects/invoice-app.jpeg",
+    liveStatus: "live",
     problem:
       "The app needed to handle a complete invoice workflow with multiple status rules, form validation, draft behavior, filtering, persistence, and responsive layouts.",
     build:
@@ -117,15 +117,15 @@ export const projects = [
     longDesc:
       "Implemented a habit tracking Progressive Web App from a formal requirements document, following exact file structure, selectors, naming conventions, persistence behavior, PWA requirements, and automated test expectations. This project focused on engineering discipline and spec compliance.",
     tech: ["PWA", "JavaScript", "Testing", "LocalStorage", "Service Worker"],
-    link: "https://github.com",
+    link: "https://habit-tracker-pwa-ashen.vercel.app/",
     github: "https://github.com/dreadhead0/habit-tracker-pwa",
     featured: false,
     year: 2026,
     visual: "pwa",
     status: "case-study",
     type: "Frontend System",
-    image: "/projects/habit-tracker.png",
-    liveStatus: "coming-soon",
+    image: "/projects/habit-tracker.jpeg",
+    liveStatus: "live",
     problem:
       "The project required implementing a Progressive Web App from a strict technical requirements document with exact routes, naming rules, persistence behavior, selectors, and test expectations.",
     build:
@@ -142,7 +142,7 @@ export const projects = [
     longDesc:
       "Built a real Chrome extension with popup UI, background service worker, content script extraction, secure AI request flow, loading and error states, chrome.storage caching, and clean extension architecture. The focus was browser APIs, message passing, security, and useful UX.",
     tech: ["Chrome Extension", "Manifest V3", "JavaScript", "AI API", "Security"],
-    link: "https://github.com",
+    link: "https://ai-page-summarizer-doy6.onrender.com",
     github: "https://github.com/dreadhead0/ai-page-summarizer",
     featured: true,
     year: 2026,
@@ -167,15 +167,15 @@ export const projects = [
     longDesc:
       "Designed and built a production-style monitoring dashboard with simulated real-time data, line/bar/area charts, metric cards, process inspection, activity feed updates, filtering controls, and responsive layouts. The main challenge was making dense streaming data feel readable, alive, and performant.",
     tech: ["Vue", "Vite", "TypeScript", "Charts", "Realtime UI", "Performance"],
-    link: "https://github.com",
+    link: "https://real-time-data-visualization-platfo.vercel.app/",
     github: "https://github.com/dreadhead0/real-time-data-visualization-platform",
     featured: true,
     year: 2026,
     visual: "dashboard",
     status: "case-study",
     type: "Frontend System",
-    image: "/projects/realtime-dashboard.png",
-    liveStatus: "coming-soon",
+    image: "/projects/realtime-dashboard.jpeg",
+    liveStatus: "live",
     problem:
     "Real-time dashboards must update continuously without becoming noisy, slow, or unreadable. The challenge was to make streaming data feel alive while keeping the interface clear and performant.",
     build:
@@ -192,15 +192,15 @@ export const projects = [
     longDesc:
       "Built as an immersive portfolio experience rather than a static resume page. It includes persistent custom accent themes, an interactive terminal, animated reveals, keyboard-accessible controls, responsive sections, reduced-motion support, and a clean production build.",
     tech: ["SvelteKit", "Svelte", "TailwindCSS", "GSAP", "Lenis", "Accessibility"],
-    link: "https://github.com",
+    link: "https://portfolio-eta-virid-77.vercel.app/",
     github: "https://github.com/dreadhead0/portfolio",
     featured: true,
     year: 2026,
     visual: "terminal",
     status: "case-study",
     type: "Fullstack",
-    image: "/projects/portfolio.png",
-    liveStatus: "coming-soon",
+    image: "/projects/portfolio.jpeg",
+    liveStatus: "live",
     problem:
     "A developer portfolio can easily feel like a static template. The goal was to build an immersive SvelteKit experience that proves frontend skill through interaction, performance, accessibility, and visual identity.",
     build:
@@ -211,7 +211,7 @@ export const projects = [
 ];
 
 export const skills = {
-  Languages: ["JavaScript", "TypeScript", "Java", "SQL"],
+  Languages: ["JavaScript", "TypeScript", "Solidity"],
   Frontend: ["SvelteKit", "Vue", "React", "Next.js", "TailwindCSS"],
   "Browser & Platform": ["Chrome Extensions", "PWA", "Service Workers", "LocalStorage"],
   "UI Engineering": [
