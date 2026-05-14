@@ -23,8 +23,8 @@ export const projects = [
   visual: "security",
   status: "case-study",
   type: "FullStack",
-  image: "/projects/e2ee-messaging.png",
-  liveStatus: "coming-soon",
+  image: "/projects/e2ee-messaging.jpeg",
+  liveStatus: "live",
   problem:
   "Messaging apps usually require users to trust the backend with sensitive content. This project focused on proving that private messages can be encrypted before they ever reach the server.",
   build:
