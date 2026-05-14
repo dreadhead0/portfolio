@@ -88,27 +88,27 @@
         </p>
 
         <div class="contact-details">
-          <a href="mailto:alex@example.com" class="contact-item">
+          <a href="mailto:dh.dreadhead@gmail.com" class="contact-item">
             <span class="item-icon" aria-hidden="true">@</span>
-            <span>alex@example.com</span>
+            <span>dh.dreadhead@gmail.com</span>
           </a>
           <a
-            href="https://github.com/alexdev"
+            href="https://github.com/dreadhead0"
             target="_blank"
             rel="noopener noreferrer"
             class="contact-item"
           >
             <span class="item-icon" aria-hidden="true">GH</span>
-            <span>github.com/alexdev</span>
+            <span>github.com/dreadhead0</span>
           </a>
           <a
-            href="https://linkedin.com/in/alexdev"
+            href="https://linkedin.com/in/precious-odion"
             target="_blank"
             rel="noopener noreferrer"
             class="contact-item"
           >
             <span class="item-icon" aria-hidden="true">LI</span>
-            <span>linkedin.com/in/alexdev</span>
+            <span>linkedin.com/in/precious-odion</span>
           </a>
         </div>
       </div>

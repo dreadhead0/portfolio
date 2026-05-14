@@ -1,7 +1,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <span class="brand-bracket">[</span>dreadhead .dev<span
+      <span class="brand-bracket">[</span>dreadhead.dev<span
         class="brand-bracket">]</span
       >
     </div>
